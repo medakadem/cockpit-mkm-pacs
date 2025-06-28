@@ -1,5 +1,8 @@
 # MKM PACS - Cockpit Application
 
+[![CI](https://github.com/medakadem/cockpit-mkm-pacs/actions/workflows/ci.yml/badge.svg)](https://github.com/medakadem/cockpit-mkm-pacs/actions/workflows/ci.yml)
+[![Build and Test](https://github.com/medakadem/cockpit-mkm-pacs/actions/workflows/build.yml/badge.svg)](https://github.com/medakadem/cockpit-mkm-pacs/actions/workflows/build.yml)
+
 Моніторинг сервера MKM PACS DICOM через Cockpit.
 
 ## Встановлення
@@ -64,6 +67,14 @@ npm run watch    # Автоматична перезбірка при зміна
 npm run lint     # Перевірка коду
 npm run build    # Збірка для продакшену
 ```
+
+## CI/CD
+
+Проект використовує GitHub Actions для автоматичної збірки та тестування:
+
+- **CI**: Автоматична перевірка коду при кожному push/PR
+- **Build**: Збірка для різних платформ (Linux, Windows)
+- **Release**: Автоматичне створення релізів
 
 ## Ліцензія
 

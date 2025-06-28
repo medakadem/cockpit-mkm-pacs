@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build and Test (Windows)
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
     types: [ published ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-windows:
+    runs-on: windows-latest
 
     strategy:
       matrix:
@@ -37,12 +37,12 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: dist-${{ matrix.node-version }}
+        name: dist-windows-${{ matrix.node-version }}
         path: dist/
 
-  create-release:
-    needs: build
-    runs-on: ubuntu-latest
+  create-windows-release:
+    needs: build-windows
+    runs-on: windows-latest
     if: github.event_name == 'release'
 
     steps:
@@ -57,15 +57,15 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Create release package
+    - name: Create Windows release package
       run: npm run release
 
-    - name: Upload release assets
+    - name: Upload Windows release assets
       uses: actions/upload-release-asset@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./release/cockpit-mkm-pacs-${{ github.event.release.tag_name }}.tar.gz
-        asset_name: cockpit-mkm-pacs-${{ github.event.release.tag_name }}.tar.gz
-        asset_content_type: application/gzip 
+        asset_path: ./release/cockpit-mkm-pacs-${{ github.event.release.tag_name }}.zip
+        asset_name: cockpit-mkm-pacs-windows-${{ github.event.release.tag_name }}.zip
+        asset_content_type: application/zip 
