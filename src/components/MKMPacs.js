@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import HealthStatus from './HealthStatus';
 import MetricsDisplay from './MetricsDisplay';
 import ServerConfig from './ServerConfig';
@@ -13,7 +13,7 @@ const MKMPacs = () => {
     port: '7070'
   });
 
-  const fetchHealthData = async () => {
+  const fetchHealthData = useCallback(async () => {
     try {
       const response = await fetch(`http://${serverConfig.host}:${serverConfig.port}/api/monitoring/health`);
       if (!response.ok) {
@@ -24,9 +24,9 @@ const MKMPacs = () => {
     } catch (err) {
       setError(`Failed to fetch health data: ${err.message}`);
     }
-  };
+  }, [serverConfig]);
 
-  const fetchMetricsData = async () => {
+  const fetchMetricsData = useCallback(async () => {
     try {
       const response = await fetch(`http://${serverConfig.host}:${serverConfig.port}/api/monitoring/metrics`);
       if (!response.ok) {
@@ -37,9 +37,9 @@ const MKMPacs = () => {
     } catch (err) {
       setError(`Failed to fetch metrics data: ${err.message}`);
     }
-  };
+  }, [serverConfig]);
 
-  const fetchAllData = async () => {
+  const fetchAllData = useCallback(async () => {
     setLoading(true);
     setError(null);
     
@@ -49,11 +49,11 @@ const MKMPacs = () => {
     ]);
     
     setLoading(false);
-  };
+  }, [fetchHealthData, fetchMetricsData]);
 
   useEffect(() => {
     fetchAllData();
-  }, [serverConfig]);
+  }, [fetchAllData]);
 
   const handleRefresh = () => {
     fetchAllData();
