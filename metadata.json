@@ -1,0 +1,22 @@
+{
+  "name": "mkm-pacs",
+  "label": "MKM PACS",
+  "description": "Monitor MKM PACS DICOM server health and metrics through Cockpit",
+  "version": "1.0.0",
+  "author": "MKM PACS Team",
+  "license": "LGPL-2.1+",
+  "homepage": "https://github.com/medakadem/cockpit-mkm-pacs",
+  "repository": "https://github.com/medakadem/cockpit-mkm-pacs.git",
+  "bugs": "https://github.com/medakadem/cockpit-mkm-pacs/issues",
+  "keywords": ["cockpit", "pacs", "dicom", "monitoring", "health", "metrics"],
+  "categories": ["monitoring", "medical"],
+  "screenshots": [
+    {
+      "src": "https://raw.githubusercontent.com/medakadem/cockpit-mkm-pacs/main/screenshots/main-view.png",
+      "alt": "MKM PACS main monitoring view"
+    }
+  ],
+  "requirements": {
+    "cockpit": ">= 200"
+  }
+} 

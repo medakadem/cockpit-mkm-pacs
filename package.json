@@ -1,0 +1,44 @@
+{
+  "name": "cockpit-mkm-pacs",
+  "version": "1.0.0",
+  "description": "MKM PACS monitoring application for Cockpit",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "build-dev": "webpack --mode=development",
+    "watch": "webpack --mode=development --watch",
+    "lint": "eslint src/",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "scripts\\build-release.bat",
+    "deploy": "scripts\\deploy-to-github.bat"
+  },
+  "keywords": ["cockpit", "pacs", "dicom", "monitoring"],
+  "author": "MKM PACS Team",
+  "license": "LGPL-2.1+",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medakadem/cockpit-mkm-pacs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/medakadem/cockpit-mkm-pacs/issues"
+  },
+  "homepage": "https://github.com/medakadem/cockpit-mkm-pacs#readme",
+  "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "@babel/preset-react": "^7.22.0",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.8.0",
+    "eslint": "^8.42.0",
+    "eslint-plugin-react": "^7.32.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+} 
